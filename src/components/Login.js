@@ -1,21 +1,21 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 import "./Login.css";
-// import ReefSideLogo from "/Users/kshitijksawant/Programs/Reefside-Restro-React/reefside/src/components/ReefSideTitle.png";
 import ReefSideLogo from "./ReefSideTitle.png"; // Adjust the path to your image
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
-  // Inside your Login component where you handle login
   const handleLogin = () => {
     if (username === "W" && password === "WD") {
-      window.location.href = "/waiter-details"; // Redirect to Waiter Details page
+      navigate("/waiter-details"); // Navigate using useNavigate
     } else if (username === "UA" && password === "A") {
-      window.location.href = "/app";
+      navigate("/app");
     } else if (username === "AD" && password === "M") {
-      window.location.href = "/admin";
+      navigate("/admin");
     } else {
       setError("Invalid credentials");
     }
@@ -23,7 +23,6 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      {/* Add the logo image above the login box */}
       <img src={ReefSideLogo} alt="ReefSide Logo" className="logo" />
       {error && <p style={{ color: "red" }}>{error}</p>}
       <input
